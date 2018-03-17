@@ -1,62 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script type="text/javascript">
-		window.onload = function(){
-			var c = document.getElementById("c");
-			var ctx = c.getContext("2d");
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-			var s = "请我吃饭";
+        .top {
+            width: 100%;
+            height: 100px;
+            background-color: black;
+            color: #f54e1b;
+            text-align: center;
+            line-height: 100px;
 
-			ctx.textAlign = "center";
-			ctx.textBaseline = "middle";
-			ctx.font = "30px consolas";
-			ctx.fillText(s,c.width/2,c.height/2);
+        }
 
-			// 将奖项直接输出成图定义为canvas背景
-			var dataUrl = c.toDataURL("image/png");
-			c.style.background = "url("+dataUrl+")";
+        .pp {
+            margin-top: 20px;
+        }
 
-			// 覆盖层的添加
-			ctx.beginPath();
-			ctx.fillStyle = "#ccc";
-			ctx.fillRect(0,0,c.width,c.height);
+        .top_c {
+            width: 300px;
+            height: 300px;
+        }
 
-			var isDown = false;
+        .top_1 {
+            color: #f54e1b;
+            line-height: 30px;
+        }
 
-			c.addEventListener("mousedown", function(e){
-				isDown = true;
-			});
+        .top_1 a {
+            color: #f54e1b;
+            line-height: 30px;
+            text-align: right;
+            text-decoration: none;
+        }
 
-			c.addEventListener("mouseup", function(e){
-				isDown = false;
-			});
+        .zuozhe {
+            width: 150px;
+            height: 50px;
+            margin-left: 520px;
+        }
+    </style>
 
-
-			c.addEventListener("mousemove", function(e){
-				// 定义合并方式
-				// console.log(e);
-				if(isDown){
-					ctx.globalCompositeOperation = "destination-out";
-					ctx.arc(e.clientX,e.clientY,10,0,2*Math.PI);
-					ctx.fill();
-				}
-				
-			});
-
-		}
-
-
-	</script>
 </head>
+
 <body>
-    <div>欢迎来到我的网站，刮刮有惊喜：</div> 	
-	<canvas id="c" width="300" height="150">
-		
-	</canvas>
+    <div class="top">
+        <h1>欢迎来到我的网站</h1>
+
+    </div>
+    <div class="top_1">
+        <p>也许，或许，你还不知道我在等你</p>
+        <p> </p>
+        <p class="pp">阿难对佛祖说 ：我喜欢上了一女子。</p>
+        <p>佛祖问阿难：你有多喜欢这女子? </p>
+        <p>阿难说：我愿化身石桥，受那五百年风吹，五百年日晒，五百年雨淋，只求她从桥上经过。</p>
+        <p>会有多喜欢?</p>
+        <p>可是一见钟情便倾心一世？</p>
+        <p> 可是不问回报而付出等待？</p>
+        <p>阿难，某日等那女子从桥上经过，那也便只是经过了，此刻你已化身成了石桥，注定只与风雨厮守。</p>
+        <p>这一切你都明白，仍旧只为那场遇见而甘受造化之苦。</p>
+        <p>阿难，你究竟有多喜欢那从桥上经过的女子，令你舍身弃道，甘受情劫之苦？ </p>
+        <div class="zuozhe">
+            <a align="right" href="https://baike.baidu.com/item/%E7%9F%B3%E6%A1%A5%E7%A6%85/8660462?fr=aladdin">------石桥禅</a>
+        </div>
+    </div>
+    <div class="music">
+        <audio src="video/xiangwo.mp3" autobuffer autoloop loop autoplay id="music_2">
+        </audio>
+    </div>
 </body>
+
 </html>
