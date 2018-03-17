@@ -5,8 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script type="text/javascript">
+		window.onload = function(){
+			var c = document.getElementById("c");
+			var ctx = c.getContext("2d");
+
+			var s = "请我吃饭";
+
+			ctx.textAlign = "center";
+			ctx.textBaseline = "middle";
+			ctx.font = "30px consolas";
+			ctx.fillText(s,c.width/2,c.height/2);
+
+			// 将奖项直接输出成图定义为canvas背景
+			var dataUrl = c.toDataURL("image/png");
+			c.style.background = "url("+dataUrl+")";
+
+			// 覆盖层的添加
+			ctx.beginPath();
+			ctx.fillStyle = "#ccc";
+			ctx.fillRect(0,0,c.width,c.height);
+
+			var isDown = false;
+
+			c.addEventListener("mousedown", function(e){
+				isDown = true;
+			});
+
+			c.addEventListener("mouseup", function(e){
+				isDown = false;
+			});
+
+
+			c.addEventListener("mousemove", function(e){
+				// 定义合并方式
+				// console.log(e);
+				if(isDown){
+					ctx.globalCompositeOperation = "destination-out";
+					ctx.arc(e.clientX,e.clientY,10,0,2*Math.PI);
+					ctx.fill();
+				}
+				
+			});
+
+		}
+
+
+	</script>
 </head>
 <body>
-    qqq
+    <div>欢迎来到我的网站，刮刮有惊喜：</div> 	
+	<canvas id="c" width="300" height="150">
+		
+	</canvas>
 </body>
 </html>
